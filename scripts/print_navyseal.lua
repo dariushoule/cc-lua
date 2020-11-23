@@ -8,8 +8,9 @@ while (l > 0) do
     local row_i = 1
     if printer.newPage() then
         local w, h = printer.getPageSize()
+        print("wh", w, h)
         while (row_i <= h and l > 0) do
-            local col_i = 0
+            local col_i = 1
             while (col_i <= w and l > 0) do
                 if printer.getPaperLevel() == 0 then
                     error("There is no paper in the printer!")
