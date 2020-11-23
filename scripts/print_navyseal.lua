@@ -18,7 +18,7 @@ while (l > 0) do
                     error("There is no ink in the printer!")
                 end
 
-                printer.setCursorPos(row_i, col_i)
+                printer.setCursorPos(col_i, row_i)
                 printer.write(string.sub(s, 1, 1))
                 s = string.sub(s, 2, #s)
                 l = #s
