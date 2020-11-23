@@ -16,7 +16,7 @@ metaHttp.close()
 
 for _, script in ipairs(meta["scripts"]) do
   fs.delete(script.file)
-  shell.run("wget", "http://cc.servebeer.com/scripts/" .. script.file)
+  shell.run("wget", "http://cc.servebeer.com/" .. script.file)
 end
 
 shell.run("/startup")
