@@ -31,6 +31,7 @@ while (l > 0) do
                     if string.sub(s, seek_i, 1) == " " then
                        has_clean_break = true
                     end
+                    seek_i = seek_i + 1
                 end
 
                 if not has_clean_break then
