@@ -10,7 +10,7 @@ app = FastAPI()
 
 @app.get('/install', response_class=PlainTextResponse)
 def installer():
-    with open('./installer.lua') as f:
+    with open('./scripts/sync.lua') as f:
         return f.read()
 
 

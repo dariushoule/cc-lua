@@ -1,9 +1,23 @@
--- MD5:3330647456050f750c4a310c62e2c7e2
---
--- Created by IntelliJ IDEA.
--- User: Dariush Houle
--- Date: 11/22/2020
--- Time: 5:07 PM
--- To change this template use File | Settings | File Templates.
---
+-- MD5:dcf89eb2d18ddfea0ca68ceef1fbddb7
+fs.delete("/cc.servebeer.com")
+fs.makeDir("/cc.servebeer.com")
+fs.makeDir("/cc.servebeer.com/api")
+shell.setDir("/cc.servebeer.com/")
 
+fs.delete("/startup")
+shell.run("wget", "http://cc.servebeer.com/startup", "/startup")
+fs.delete("/cc.servebeer.com/api/json.lua")
+shell.run("wget", "http://cc.servebeer.com/scripts/api/json.lua", "/cc.servebeer.com/api/json.lua")
+
+os.loadAPI("/cc.servebeer.com/api/json.lua")
+
+local metaHttp = http.get("http://cc.servebeer.com/meta/")
+meta = json.parse(metaHttp.readAll())
+metaHttp.close()
+
+for _, script in ipairs(meta["scripts"]) do
+  fs.delete(script.file)
+  shell.run("wget", "http://cc.servebeer.com/" .. script.file)
+end
+
+shell.run("/startup")
