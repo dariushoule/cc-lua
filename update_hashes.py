@@ -11,5 +11,7 @@ for file in glob('scripts/api/*.lua') + glob('scripts/*.lua') + glob('*.lua'):
         md5_line, _, source = script.partition("\n")
         script.replace(md5_line.split(':')[1], md5(source.encode('utf-8')).hexdigest())
 
+    print(f'{file}: hash updated.')
+
     with open(file, 'w') as f:
         f.write(script)
