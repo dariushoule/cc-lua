@@ -3,17 +3,18 @@ from glob import glob
 import uvicorn
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import PlainTextResponse
 
 app = FastAPI()
 
 
-@app.get('/install')
+@app.get('/install', response_class=PlainTextResponse)
 def installer():
     with open('./installer.lua') as f:
         return f.read()
 
 
-@app.get('/startup')
+@app.get('/startup', response_class=PlainTextResponse)
 def startup():
     with open('./startup_bootstrapper.lua') as f:
         return f.read()
