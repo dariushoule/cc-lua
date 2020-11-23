@@ -8,7 +8,6 @@ while (l > 0) do
     local row_i = 1
     if printer.newPage() then
         local w, h = printer.getPageSize()
-        print("wh", w, h)
         while (row_i <= h and l > 0) do
             local col_i = 1
             while (col_i <= w and l > 0) do
@@ -21,7 +20,7 @@ while (l > 0) do
 
                 printer.setCursorPos(row_i, col_i)
                 printer.write(string.sub(s, 1, 1))
-                s = string.sub(2, #s)
+                s = string.sub(s, 2, #s)
                 l = #s
                 col_i = col_i + 1
             end
