@@ -17,7 +17,16 @@ while (l > 0) do
         local w, h = printer.getPageSize()
         while (row_i <= h and l > 0) do
             local col_i = 1
-            while (col_i <= w and l > 0) do
+            local seek_i = 1
+            local last_space_i = #s
+            while (seek_i <= 25) do
+                if string.sub(s, seek_i, seek_i) == " " then
+                   last_space_i = seek_i
+                end
+                seek_i = seek_i + 1
+            end
+
+            while (col_i <= last_space_i and l > 0) do
                 if printer.getPaperLevel() == 0 then
                     error("There is no paper in the printer!")
                 end
@@ -25,18 +34,6 @@ while (l > 0) do
                     error("There is no ink in the printer!")
                 end
 
-                local has_clean_break = false
-                local seek_i = col_i
-                while (seek_i <= w) do
-                    if string.sub(s, seek_i, seek_i) == " " then
-                       has_clean_break = true
-                    end
-                    seek_i = seek_i + 1
-                end
-
-                if not has_clean_break then
-                    break
-                end
 
                 printer.setCursorPos(col_i, row_i)
                 printer.write(string.sub(s, 1, 1))
