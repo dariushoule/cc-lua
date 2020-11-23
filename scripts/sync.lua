@@ -12,7 +12,7 @@ shell.run("wget", "http://cc.servebeer.com/scripts/api/json.lua", "/cc.servebeer
 os.loadAPI("/cc.servebeer.com/api/json.lua")
 
 local metaHttp = http.get("http://cc.servebeer.com/meta/")
-meta = json.parse(metaHttp.readAll())
+local meta = json.parse(metaHttp.readAll())
 metaHttp.close()
 
 for _, script in ipairs(meta["scripts"]) do
