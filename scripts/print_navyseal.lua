@@ -28,7 +28,7 @@ while (l > 0) do
                 local has_clean_break = false
                 local seek_i = col_i
                 while (seek_i <= w) do
-                    if string.sub(s, seek_i, 1) == " " then
+                    if string.sub(s, seek_i, seek_i) == " " then
                        has_clean_break = true
                     end
                     seek_i = seek_i + 1
