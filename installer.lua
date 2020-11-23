@@ -6,7 +6,7 @@ shell.setDir("/cc.servebeer.com/")
 shell.run("wget", "http://cc.servebeer.com/startup", "/startup")
 shell.run("wget", "http://cc.servebeer.com/scripts/api/json.lua", "/cc.servebeer.com/api/json.lua")
 
-os.loadAPI("/cc.servebeer.com/api/json")
+os.loadAPI("/cc.servebeer.com/api/json.lua")
 
 local metaHttp = http.get("http://cc.servebeer.com/meta/")
 meta = json.parse(metaHttp.readAll())
