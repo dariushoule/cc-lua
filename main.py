@@ -7,19 +7,19 @@ from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 
 
-@app.get('install')
+@app.get('/install')
 def installer():
     with open('./installer.lua') as f:
         return f.read()
 
 
-@app.get('startup')
+@app.get('/startup')
 def startup():
     with open('./startup_bootstrapper.lua') as f:
         return f.read()
 
 
-@app.get('meta')
+@app.get('/meta')
 def meta():
     m = {
         "scripts": []
